@@ -1,4 +1,4 @@
 .venv/
-/data/
+**/data/
 /inkmlviewer/
 /prev_data/
