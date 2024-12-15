@@ -2,3 +2,5 @@
 **/data/
 /inkmlviewer/
 /prev_data/
+/tools/
+**/*.keras
