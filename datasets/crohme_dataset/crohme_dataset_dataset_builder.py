@@ -53,9 +53,10 @@ def parse_inkml(file_path: Path):
 class Builder(tfds.core.GeneratorBasedBuilder):
     """DatasetBuilder for crohme_dataset dataset."""
 
-    VERSION = tfds.core.Version("1.0.0")
+    VERSION = tfds.core.Version("1.0.2")
     RELEASE_NOTES = {
         "1.0.0": "Initial release.",
+        "1.0.2": "I'm stupid!",
     }
 
     def _info(self) -> tfds.core.DatasetInfo:
@@ -70,7 +71,7 @@ class Builder(tfds.core.GeneratorBasedBuilder):
                         )
                     ),
                     "ground_truth": tfds.features.Text(),
-                    "filename": tfds.features.Text(),
+                    "filepath": tfds.features.Text(),
                 }
             ),
             # If there's a common (input, target) tuple from the
@@ -97,10 +98,10 @@ class Builder(tfds.core.GeneratorBasedBuilder):
             if len(ground_truth) == 0:
                 continue
             yield (
-                f"{random.randint(1, 10000)}_{f.name}",
+                str(f.resolve()),
                 {
                     "strokes": strokes,
                     "ground_truth": ground_truth,
-                    "filename": f.name,
+                    "filepath": str(f.resolve()),
                 },
             )
