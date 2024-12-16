@@ -4,3 +4,5 @@
 /prev_data/
 /tools/
 **/*.keras
+/vocabulary/
+vocabulary.txt
